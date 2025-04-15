@@ -1,0 +1,52 @@
+<div class="container mt-4">
+    <h3>Event List</h3>
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Date</th>
+          <th>Capacity</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of events">
+          <td>{{ event.id }}</td>
+          <td>{{ event.name }}</td>
+          <td>{{ event.location }}</td>
+          <td>{{ event.date }}</td>
+          <td>{{ event.capacity }}</td>
+          <td>
+            <button class="btn btn-info btn-sm me-2" (click)="view(event.id)">View</button>
+            <button class="btn btn-warning btn-sm me-2" (click)="edit(event.id)">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="delete(event.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Event View Modal -->
+  <div class="modal fade" id="eventViewModal" tabindex="-1" aria-labelledby="eventViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="eventViewModalLabel">Event Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" *ngIf="selectedEvent">
+          <p><strong>ID:</strong> {{ selectedEvent.id }}</p>
+          <p><strong>Name:</strong> {{ selectedEvent.name }}</p>
+          <p><strong>Location:</strong> {{ selectedEvent.location }}</p>
+          <p><strong>Date:</strong> {{ selectedEvent.date }}</p>
+          <p><strong>Capacity:</strong> {{ selectedEvent.capacity }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

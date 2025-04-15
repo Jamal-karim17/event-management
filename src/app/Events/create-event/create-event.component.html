@@ -1,0 +1,26 @@
+<div class="container mt-4">
+    <h3>{{ isEditMode ? 'Edit Event' : 'Register Event' }}</h3>
+  
+    <form (ngSubmit)="onSubmit()" #eventForm="ngForm">
+      <div class="mb-3">
+        <label for="name">Event Name</label>
+        <input id="name" class="form-control" [(ngModel)]="event.name" name="name" required />
+      </div>
+      <div class="mb-3">
+        <label for="location">Location</label>
+        <input id="location" class="form-control" [(ngModel)]="event.location" name="location" required />
+      </div>
+      <div class="mb-3">
+        <label for="date">Date</label>
+        <input id="date" type="date" class="form-control" [(ngModel)]="event.date" name="date" required />
+      </div>
+      <div class="mb-3">
+        <label for="capacity">Capacity</label>
+        <input id="capacity" type="number" class="form-control" [(ngModel)]="event.capacity" name="capacity" required />
+      </div>
+      <button type="submit" class="btn btn-primary">
+        {{ isEditMode ? 'Update Event' : 'Register Event' }}
+      </button>
+    </form>
+  </div>
+  

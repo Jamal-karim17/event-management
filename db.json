@@ -1,0 +1,139 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "name": "Ngemi 5.0",
+      "location": "Nakuru",
+      "date": "2025-04-29",
+      "capacity": 700
+    },
+    {
+      "id": "2",
+      "name": "Ngemi 6.0",
+      "location": "San Francisco",
+      "date": "2025-04-22",
+      "capacity": 900
+    },
+    {
+      "id": 3,
+      "name": "Afro-fusion",
+      "location": "San Francisco",
+      "date": "2025-04-15",
+      "capacity": 1000
+    },
+    {
+      "id": 4,
+      "name": "Raha Fest",
+      "location": "Nairobi",
+      "date": "2025-05-09",
+      "capacity": 1000
+    }
+  ],
+  "attendees": [
+    {
+      "fullName": "Justin",
+      "email": "justinnjogu35@gmail.com",
+      "eventId": 2,
+      "eventName": "Ngemi 6.0",
+      "id": 1
+    },
+    {
+      "fullName": "kamau peterson",
+      "email": "habibi@gmail.com",
+      "eventId": 1,
+      "eventName": "Ngemi 5.0",
+      "id": 2
+    },
+    {
+      "fullName": "John Doe",
+      "email": "teacher@gmail.com",
+      "eventId": 2,
+      "eventName": "Ngemi 6.0",
+      "id": 3
+    },
+    {
+      "fullName": "shokman",
+      "email": "Shisokamanuel@gmail.com",
+      "eventId": 1,
+      "eventName": "Ngemi 5.0",
+      "id": 4
+    },
+    {
+      "fullName": "Eric",
+      "email": "rik@gmail.com",
+      "eventId": 1,
+      "eventName": "Ngemi 5.0",
+      "id": 5
+    },
+    {
+      "fullName": "Edwin",
+      "email": "edu@gmail.com",
+      "eventId": 3,
+      "eventName": "Afro-fusion",
+      "id": 6
+    },
+    {
+      "fullName": "Mukoma",
+      "email": "muks@gmail.com",
+      "eventId": 4,
+      "eventName": "Raha Fest",
+      "id": 7
+    }
+  ],
+  "tickets": [
+    {
+      "ticketNumber": "6742104357822655",
+      "attendeeId": 1,
+      "attendeeName": "Justin",
+      "eventId": "2",
+      "eventName": "Ngemi 6.0",
+      "eventDate": "2025-04-22",
+      "id": 1
+    },
+    {
+      "ticketNumber": "6162657575253112",
+      "attendeeId": "4",
+      "attendeeName": "shokman",
+      "eventId": "3",
+      "eventName": "Afro-fusion",
+      "eventDate": "2025-04-15",
+      "id": 2
+    },
+    {
+      "ticketNumber": "0731772091982581",
+      "attendeeId": "3",
+      "attendeeName": "John Doe",
+      "eventId": "3",
+      "eventName": "Afro-fusion",
+      "eventDate": "2025-04-15",
+      "id": 3
+    },
+    {
+      "ticketNumber": "6921364359290553",
+      "attendeeId": "5",
+      "attendeeName": "Eric",
+      "eventId": "1",
+      "eventName": "Ngemi 5.0",
+      "eventDate": "2025-04-29",
+      "id": 4
+    },
+    {
+      "ticketNumber": "0155905040038177",
+      "attendeeId": "6",
+      "attendeeName": "Edwin",
+      "eventId": "2",
+      "eventName": "Ngemi 6.0",
+      "eventDate": "2025-04-22",
+      "id": 5
+    },
+    {
+      "ticketNumber": "6777477410266670",
+      "attendeeId": "7",
+      "attendeeName": "Mukoma",
+      "eventId": "4",
+      "eventName": "Raha Fest",
+      "eventDate": "2025-05-09",
+      "id": 6
+    }
+  ]
+}

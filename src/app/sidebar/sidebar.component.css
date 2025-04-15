@@ -1,0 +1,116 @@
+/* Sidebar */
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #343a40; 
+    color: white;
+    padding-top: 20px;
+    z-index: 100;
+    overflow-y: auto;
+    transition: all 0.3s;
+  }
+  
+  /* Sidebar header */
+  .sidebar-header {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+  
+  .sidebar-header h5 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0;
+    padding-left: 20px;
+  
+  }
+  
+  /* Navigation items */
+  .nav-item {
+    margin-bottom: 15px;
+  }
+  
+  .nav-link {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+  
+  .nav-link:hover {
+    background-color: #495057; /* Lighten background on hover */
+  }
+  
+  .nav-link i {
+    margin-right: 10px;
+  }
+  
+  .nav-link .float-end {
+    margin-left: auto;
+  }
+  
+  .nav-item .nav-link {
+    padding-left: 25px;
+  }
+  
+  /* Chevron icons for collapse functionality */
+  .nav-item .nav-link .bi-chevron-down,
+  .nav-item .nav-link .bi-chevron-up {
+    font-size: 1.2rem;
+  }
+  
+  .nav-item .nav-link .bi {
+    font-size: 1.3rem;
+  }
+  
+  /* Indented sub-menu navigation */
+  .nav .ms-3 {
+    margin-left: 20px;
+  }
+  
+  .nav .ms-3 .nav-item {
+    padding-left: 30px;
+  }
+  
+  .nav .ms-3 .nav-item .nav-link {
+    font-size: 0.9rem;
+    padding-left: 35px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav .ms-3 .nav-item .nav-link i {
+    margin-right: 8px;
+  }
+  
+  /* Collapse animation for sub-menus */
+  .nav-item .nav-link .bi-chevron-down,
+  .nav-item .nav-link .bi-chevron-up {
+    transition: transform 0.3s ease;
+  }
+  
+  .nav-item .nav-link[aria-expanded="true"] .bi-chevron-down {
+    transform: rotate(-180deg);
+  }
+  
+  .nav-item .nav-link[aria-expanded="false"] .bi-chevron-up {
+    transform: rotate(180deg);
+  }
+  
+  /* Responsive sidebar for smaller screens */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 100%;
+      position: relative;
+      height: auto;
+    }
+  }
+  

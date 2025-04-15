@@ -1,0 +1,34 @@
+/* Add extra padding to make the modal fit better */
+.modal-content {
+    padding: 15px;
+  }
+  
+  /* Center the modal content vertically */
+  .modal-dialog {
+    max-width: 500px;
+    margin: 30px auto;
+  }
+  
+  /* Ensure the modal backdrop has a slight transparency effect */
+  .modal-backdrop.show {
+    opacity: 0.5;
+  }
+  
+  /* Optional: Style the modal header to match your theme */
+  .modal-header {
+    background-color: #343a40;
+    color: #fff;
+  }
+  
+  /* Modal footer styles */
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  /* Button styling */
+  .btn-info, .btn-warning, .btn-danger {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+  

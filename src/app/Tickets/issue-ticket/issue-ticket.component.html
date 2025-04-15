@@ -1,0 +1,25 @@
+<div class="container mt-4">
+    <h3>{{ isEditMode ? 'Edit Ticket' : 'Issue Ticket' }}</h3>
+    <form #ticketForm="ngForm" (ngSubmit)="onSubmit(ticketForm)">
+      <div class="mb-3">
+        <label for="attendee">Attendee</label>
+        <select id="attendee" name="attendeeId" class="form-control" [(ngModel)]="ticket.attendeeId" required>
+          <option *ngFor="let attendee of attendees" [value]="attendee.id">
+            {{ attendee.fullName }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="event">Event</label>
+        <select id="event" name="eventId" class="form-control" [(ngModel)]="ticket.eventId" required>
+          <option *ngFor="let event of events" [value]="event.id">
+            {{ event.name }}
+          </option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        {{ isEditMode ? 'Update Ticket' : 'Issue Ticket' }}
+      </button>
+    </form>
+  </div>
+  
