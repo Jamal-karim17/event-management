@@ -23,7 +23,7 @@ export class TicketService {
 
   // Get a ticket by ID (ensure the ID is passed as a string)
   getTicketById(id: string | number): Observable<Ticket> {
-    return this.http.get<Ticket>(`${this.apiUrl}/${String(id)}`); // Convert to string
+    return this.http.get<Ticket>(`${this.apiUrl}/${String(id)}`); 
   }
 
   // Add a new ticket
@@ -42,6 +42,6 @@ export class TicketService {
 
   // Delete a ticket by ID (ensure the ID is passed as a string)
   deleteTicket(id: string | number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${String(id)}`); // Convert to string
+    return this.http.delete<void>(`${this.apiUrl}/${String(id)}`); 
   }
 }

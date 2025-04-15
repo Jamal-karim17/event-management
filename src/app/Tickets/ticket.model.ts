@@ -6,5 +6,6 @@ export interface Ticket {
     eventId: number;
     eventName: string;
     eventDate: string;
+    tickettype: string
   }
   

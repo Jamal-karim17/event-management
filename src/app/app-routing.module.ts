@@ -6,6 +6,7 @@ import { AttendeeListComponent } from './Attendee/attendee-list/attendee-list.co
 import { RegisterAttendeeComponent } from './Attendee/register-attendee/register-attendee.component';
 import { IssueTicketComponent } from './Tickets/issue-ticket/issue-ticket.component';
 import { TicketListComponent } from './Tickets/ticket-list/ticket-list.component';
+import { DashboardComponent } from './Home/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: 'createevent', component: CreateEventComponent},
@@ -19,6 +20,9 @@ const routes: Routes = [
 { path: 'tickets/issue', component: IssueTicketComponent },
   { path: 'tickets/edit/:id', component: IssueTicketComponent }, // Edit mode reuses IssueTicketComponent
   { path: 'tickets/list', component: TicketListComponent },
+
+  {path: 'home', component: DashboardComponent},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   
 ];
 

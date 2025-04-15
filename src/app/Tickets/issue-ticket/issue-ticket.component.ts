@@ -22,7 +22,8 @@ export class IssueTicketComponent implements OnInit {
     attendeeName: '',
     eventId: 0,     // Change to number for consistency
     eventName: '',
-    eventDate: ''
+    eventDate: '',
+    tickettype: ''
   };
   isEditMode: boolean = false;
 

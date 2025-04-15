@@ -12,6 +12,7 @@ import { AttendeeListComponent } from './Attendee/attendee-list/attendee-list.co
 import { IssueTicketComponent } from './Tickets/issue-ticket/issue-ticket.component';
 import { TicketListComponent } from './Tickets/ticket-list/ticket-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './Home/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterAttendeeComponent,
     AttendeeListComponent,
     IssueTicketComponent,
-    TicketListComponent
+    TicketListComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

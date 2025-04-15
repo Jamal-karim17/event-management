@@ -7,6 +7,7 @@
           <th>Attendee</th>
           <th>Event</th>
           <th>Event Date</th>
+          <th>Ticket Type</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -16,6 +17,7 @@
           <td>{{ ticket.attendeeName }}</td>
           <td>{{ ticket.eventName }}</td>
           <td>{{ ticket.eventDate | date }}</td>
+          <td>{{ ticket.tickettype }}</td>
           <td>
             <button class="btn btn-info btn-sm me-2" (click)="view(ticket.id)">View</button>
             <button class="btn btn-warning btn-sm me-2" (click)="edit(ticket.id)">Edit</button>
@@ -39,6 +41,7 @@
           <p><strong>Attendee:</strong> {{ selectedTicket.attendeeName }}</p>
           <p><strong>Event:</strong> {{ selectedTicket.eventName }}</p>
           <p><strong>Event Date:</strong> {{ selectedTicket.eventDate | date }}</p>
+          <p><strong>Ticket Type:</strong> {{ selectedTicket.tickettype }}</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -43,7 +43,7 @@ export class EventListComponent implements OnInit {
   delete(id: number): void {
     if (confirm('Are you sure you want to delete this event?')) {
       this.eventService.deleteEvent(id).subscribe(() => {
-        this.events = this.events.filter(event => event.id !== id); // Filter events by number id
+        this.events = this.events.filter(event => event.id !== id); 
       });
     }
   }

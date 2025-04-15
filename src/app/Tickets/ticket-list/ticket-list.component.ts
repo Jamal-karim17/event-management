@@ -39,11 +39,11 @@ export class TicketListComponent implements OnInit {
   delete(id: number): void {
     // Confirm the deletion with the user
     if (confirm('Are you sure you want to delete this ticket?')) {
-      // Call the delete service method to delete the ticket
+     
       this.ticketService.deleteTicket(id).subscribe(() => {
-        // Fetch the updated list of tickets after deletion
+        
         this.ticketService.getTickets().subscribe((tickets) => {
-          // Update the tickets list in the component
+        
           this.tickets = tickets;
         });
       });

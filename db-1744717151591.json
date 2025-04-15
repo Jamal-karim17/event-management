@@ -27,20 +27,6 @@
       "location": "Nairobi",
       "date": "2025-05-09",
       "capacity": 1000
-    },
-    {
-      "id": 5,
-      "name": "Sol-Fest",
-      "location": "Nairobi-Ngong Racecourse",
-      "date": "2025-11-29",
-      "capacity": 8500
-    },
-    {
-      "id": 6,
-      "name": "Amapiano Tour",
-      "location": "Nairobi-Kilimani",
-      "date": "2025-04-15",
-      "capacity": 1000
     }
   ],
   "attendees": [
@@ -92,20 +78,6 @@
       "eventId": 4,
       "eventName": "Raha Fest",
       "id": 7
-    },
-    {
-      "fullName": "Mel'd",
-      "email": "mel@gmail.com",
-      "eventId": 5,
-      "eventName": "Sol-Fest",
-      "id": 8
-    },
-    {
-      "fullName": "Ann ",
-      "email": "ann@gmail.com",
-      "eventId": 6,
-      "eventName": "Amapiano Tour",
-      "id": 9
     }
   ],
   "tickets": [
@@ -113,81 +85,55 @@
       "ticketNumber": "6742104357822655",
       "attendeeId": 1,
       "attendeeName": "Justin",
-      "eventId": 2,
+      "eventId": "2",
       "eventName": "Ngemi 6.0",
       "eventDate": "2025-04-22",
-      "id": 1,
-      "tickettype": "Regular"
+      "id": 1
     },
     {
       "ticketNumber": "6162657575253112",
-      "attendeeId": 4,
+      "attendeeId": "4",
       "attendeeName": "shokman",
-      "eventId": 3,
+      "eventId": "3",
       "eventName": "Afro-fusion",
       "eventDate": "2025-04-15",
-      "id": 2,
-      "tickettype": "VIP"
+      "id": 2
     },
     {
       "ticketNumber": "0731772091982581",
-      "attendeeId": 3,
+      "attendeeId": "3",
       "attendeeName": "John Doe",
-      "eventId": 3,
+      "eventId": "3",
       "eventName": "Afro-fusion",
       "eventDate": "2025-04-15",
-      "id": 3,
-      "tickettype": "VVIP"
+      "id": 3
     },
     {
       "ticketNumber": "6921364359290553",
-      "attendeeId": 5,
+      "attendeeId": "5",
       "attendeeName": "Eric",
-      "eventId": 1,
+      "eventId": "1",
       "eventName": "Ngemi 5.0",
       "eventDate": "2025-04-29",
-      "id": 4,
-      "tickettype": "VIP"
+      "id": 4
     },
     {
       "ticketNumber": "0155905040038177",
-      "attendeeId": 6,
+      "attendeeId": "6",
       "attendeeName": "Edwin",
-      "eventId": 2,
+      "eventId": "2",
       "eventName": "Ngemi 6.0",
       "eventDate": "2025-04-22",
-      "id": 5,
-      "tickettype": "Regular"
+      "id": 5
     },
     {
       "ticketNumber": "6777477410266670",
-      "attendeeId": 7,
+      "attendeeId": "7",
       "attendeeName": "Mukoma",
-      "eventId": 4,
+      "eventId": "4",
       "eventName": "Raha Fest",
       "eventDate": "2025-05-09",
-      "id": 6,
-      "tickettype": "Regular"
-    },
-    {
-      "ticketNumber": "2329521382801388",
-      "attendeeId": 8,
-      "attendeeName": "Mel'd",
-      "eventId": 5,
-      "eventName": "Sol-Fest",
-      "eventDate": "2025-11-29",
-      "id": 7,
-      "tickettype": "VVIP"
-    },
-    {
-      "ticketNumber": "6121384481616241",
-      "attendeeId": "9",
-      "attendeeName": "Ann ",
-      "eventId": "6",
-      "eventName": "Amapiano Tour",
-      "eventDate": "2025-04-15",
-      "tickettype": "Regular",
-      "id": 8
+      "id": 6
     }
   ]
 }

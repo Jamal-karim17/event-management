@@ -26,17 +26,17 @@ export class AttendeeService {
 
   // Add a new attendee with auto-generated ID, and update event name
   addAttendee(attendee: Attendee): Observable<Attendee> {
-    // Ensure that the ID is treated as a number
-    attendee.id = Number(attendee.id); // Convert ID to number, just in case
+    
+    attendee.id = Number(attendee.id); 
   
-    return this.http.post<Attendee>(this.apiUrl, attendee); // The backend should auto-assign an ID
+    return this.http.post<Attendee>(this.apiUrl, attendee); 
   }
   
-  // Update an existing attendee, and update event name
+  
   updateAttendee(attendee: Attendee): Observable<Attendee> {
     return this.eventService.getEventById(attendee.eventId).pipe(
       switchMap((event: Event | undefined) => {
-        attendee.eventName = event?.name || ''; // Assign event name from the event service
+        attendee.eventName = event?.name || ''; 
         return this.http.put<Attendee>(`${this.apiUrl}/${attendee.id}`, attendee);
       })
     );
@@ -47,7 +47,7 @@ export class AttendeeService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  // Proxy to eventService for dropdowns, etc.
+  // Proxy to eventService for dropdowns
   getEvents(): Observable<Event[]> {
     return this.eventService.getEvents();
   }

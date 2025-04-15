@@ -42,20 +42,20 @@ export class CreateEventComponent implements OnInit {
       // Update the existing event (PUT request)
       this.eventService.updateEvent(this.event).subscribe(
         () => {
-          this.router.navigate(['/eventlist']); // Redirect after success
+          this.router.navigate(['/eventlist']); 
         },
         (error) => {
-          console.error('Error updating event:', error); // Error handling
+          console.error('Error updating event:', error);
         }
       );
     } else {
       // Add a new event (POST request)
       this.eventService.addEvent(this.event).subscribe(
         () => {
-          this.router.navigate(['/eventlist']); // Redirect after success
+          this.router.navigate(['/eventlist']); 
         },
         (error) => {
-          console.error('Error adding event:', error); // Error handling
+          console.error('Error adding event:', error); 
         }
       );
     }
