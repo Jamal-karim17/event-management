@@ -4,4 +4,5 @@ export interface Event {
   location: string;
   date: string;
   capacity: number;
+  
 }

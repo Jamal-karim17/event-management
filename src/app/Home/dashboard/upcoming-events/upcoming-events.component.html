@@ -3,11 +3,32 @@
     <ul *ngIf="upcomingEvents.length > 0; else noUpcoming">
       <li *ngFor="let event of upcomingEvents">
         <strong>{{ event.name }}</strong> - {{ event.date | date: 'mediumDate' }}
-        <a [routerLink]="'/eventlist'">View Details</a>
+        <a href="javascript:void(0)" (click)="view(event.id)">View Details</a>
       </li>
     </ul>
     <ng-template #noUpcoming>
       <p>No upcoming events</p>
     </ng-template>
+  </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="eventViewModal" tabindex="-1" aria-labelledby="eventViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="eventViewModalLabel">{{ selectedEvent?.name }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Date:</strong> {{ selectedEvent?.date | date: 'mediumDate' }}</p>
+          <p><strong>Location:</strong> {{ selectedEvent?.location }}</p>
+          <!-- Remove this line -->
+          <!-- <p><strong>Description:</strong> {{ selectedEvent?.description }}</p> -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
   

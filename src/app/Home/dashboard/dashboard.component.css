@@ -2,19 +2,21 @@
   padding: 2rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #f9fafb;
-  color: #333;
+  color: #080808;
 }
 
 h1 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  color: #2c3e50;
+  color: #000000;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+
 }
 
 p {
   font-size: 1.1rem;
   margin-bottom: 2rem;
-  color: #555;
+  color: #141414;
 }
 
 /* Cards */

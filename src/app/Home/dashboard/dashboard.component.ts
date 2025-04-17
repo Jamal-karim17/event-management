@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartData, ChartOptions, ChartType } from 'chart.js';
 import { EventService } from 'src/app/Services/event.service';
 import { AttendeeService } from 'src/app/Services/attendee.service';
 import { TicketService } from 'src/app/Services/ticket.service';
@@ -23,33 +22,6 @@ export class DashboardComponent implements OnInit {
   tickets: Ticket[] = [];
   upcomingEvents: Event[] = [];
 
-  barChartLabels: string[] = [];
-  barChartData: ChartData<'bar'> = {
-    labels: [],
-    datasets: [
-      {
-        data: [],
-        label: 'Events per Month',
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgba(255, 99, 132, 1)',
-        borderWidth: 1
-      }
-    ]
-  };
-  barChartType: ChartType = 'bar';
-
-  pieChartLabels: string[] = [];
-  pieChartData: number[] = [];
-  pieChartType: ChartType = 'pie';
-
-  pieChartOptions: ChartOptions = {
-    responsive: true
-  };
-
-  barChartOptions: ChartOptions = {
-    responsive: true
-  };
-
   constructor(
     private eventService: EventService,
     private attendeeService: AttendeeService,
@@ -57,21 +29,13 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadCountsAndCharts();
+    this.loadCountsAndUpcomingEvents();
   }
 
-  loadCountsAndCharts(): void {
+  loadCountsAndUpcomingEvents(): void {
     this.eventService.getEvents().subscribe((events: Event[]) => {
       this.events = events;
       this.eventCount = events.length;
-
-      const eventCounts: Record<string, number> = {};
-      events.forEach(event => {
-        const month = new Date(event.date).toLocaleString('default', { month: 'short' });
-        eventCounts[month] = (eventCounts[month] || 0) + 1;
-      });
-      this.barChartLabels = Object.keys(eventCounts);
-      this.barChartData.datasets[0].data = Object.values(eventCounts);
 
       this.upcomingEvents = events
         .filter(event => new Date(event.date) > new Date())
@@ -87,14 +51,26 @@ export class DashboardComponent implements OnInit {
     this.ticketService.getTickets().subscribe((tickets: Ticket[]) => {
       this.tickets = tickets;
       this.ticketCount = tickets.length;
-
-      const typeCounts: Record<string, number> = {};
-      tickets.forEach(ticket => {
-        const type = (ticket as any).type || 'Unknown';
-        typeCounts[type] = (typeCounts[type] || 0) + 1;
-      });
-      this.pieChartLabels = Object.keys(typeCounts);
-      this.pieChartData = Object.values(typeCounts);
     });
+  }
+
+  getTicketsPerEvent(): string {
+    if (this.eventCount === 0) return '0';
+    return (this.ticketCount / this.eventCount).toFixed(1);
+  }
+
+  getMostBookedEvent(): string {
+    if (!this.tickets.length || !this.events.length) return 'N/A';
+
+    const counts: { [eventName: string]: number } = {};
+
+    this.tickets.forEach(ticket => {
+      const event = this.events.find(e => e.id === ticket.eventId);
+      const eventName = event?.name || 'Unknown';
+      counts[eventName] = (counts[eventName] || 0) + 1;
+    });
+
+    const mostBooked = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
+    return mostBooked ? `${mostBooked[0]} (${mostBooked[1]})` : 'N/A';
   }
 }

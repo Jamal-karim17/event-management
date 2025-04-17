@@ -1,176 +1,90 @@
 {
   "events": [
     {
-      "id": "1",
-      "name": "Ngemi 5.0",
-      "location": "Nakuru",
-      "date": "2025-04-29",
-      "capacity": 700
-    },
-    {
-      "id": 3,
+      "id": 1,
       "name": "Afro-fusion",
       "location": "San Francisco",
-      "date": "2025-04-15",
-      "capacity": 2000
-    },
-    {
-      "id": 4,
-      "name": "Raha Fest",
-      "location": "Nairobi",
-      "date": "2025-05-09",
-      "capacity": 1000
-    },
-    {
-      "id": 5,
-      "name": "Sol-Fest",
-      "location": "Nairobi-Ngong Racecourse",
-      "date": "2025-11-29",
-      "capacity": 1000
-    },
-    {
-      "id": 6,
-      "name": "Amapiano Tour",
-      "location": "Nairobi-Kilimani",
-      "date": "2025-04-15",
-      "capacity": 1000
+      "date": "2025-04-19",
+      "capacity": 900
     },
     {
       "id": 2,
-      "name": "Ngemi 6.0",
+      "name": "Ngemi 5.0",
       "location": "Nakuru",
-      "date": "2025-04-26",
-      "capacity": 100
+      "date": "2025-05-10",
+      "capacity": 800
+    },
+    {
+      "id": 3,
+      "name": "Sol-Fest",
+      "location": "Nairobi-Kilimani",
+      "date": "2025-05-09",
+      "capacity": 1000
     }
   ],
   "attendees": [
     {
+      "fullName": "Justin",
+      "email": "justinnjogu35@gmail.com",
+      "eventId": 2,
+      "eventName": "Ngemi 5.0",
+      "id": 1
+    },
+    {
       "fullName": "kamau peterson",
       "email": "habibi@gmail.com",
       "eventId": 1,
-      "eventName": "Ngemi 5.0",
+      "eventName": "Afro-fusion",
       "id": 2
     },
     {
-      "fullName": "shokman",
-      "email": "Shisokamanuel@gmail.com",
-      "eventId": 1,
-      "eventName": "Ngemi 5.0",
-      "id": 4
-    },
-    {
-      "fullName": "Eric",
-      "email": "rik@gmail.com",
-      "eventId": 1,
-      "eventName": "Ngemi 5.0",
-      "id": 5
-    },
-    {
-      "fullName": "Edwin",
-      "email": "edu@gmail.com",
+      "fullName": "John Doe",
+      "email": "john.doe@example.com",
       "eventId": 3,
-      "eventName": "Afro-fusion",
-      "id": 6
-    },
-    {
-      "fullName": "Mukoma",
-      "email": "muks@gmail.com",
-      "eventId": 4,
-      "eventName": "Raha Fest",
-      "id": 7
-    },
-    {
-      "fullName": "Mel'd",
-      "email": "mel@gmail.com",
-      "eventId": 5,
       "eventName": "Sol-Fest",
-      "id": 8
-    },
-    {
-      "fullName": "Ann ",
-      "email": "ann@gmail.com",
-      "eventId": 6,
-      "eventName": "Amapiano Tour",
-      "id": 9
-    },
-    {
-      "fullName": "Watson",
-      "email": "watson@gmail.com",
-      "eventId": 2,
-      "eventName": "Ngemi 6.0",
-      "id": 10
+      "id": 3
     }
   ],
   "tickets": [
     {
-      "ticketNumber": "6162657575253112",
-      "attendeeId": 4,
-      "attendeeName": "shokman",
-      "eventId": 3,
-      "eventName": "Afro-fusion",
-      "eventDate": "2025-04-15",
-      "id": 2,
-      "tickettype": "VIP"
-    },
-    {
-      "ticketNumber": "0731772091982581",
-      "attendeeId": 3,
-      "attendeeName": "John Doe",
-      "eventId": 3,
-      "eventName": "Afro-fusion",
-      "eventDate": "2025-04-15",
-      "id": 3,
-      "tickettype": "VVIP"
-    },
-    {
-      "ticketNumber": "6921364359290553",
-      "attendeeId": 5,
-      "attendeeName": "Eric",
-      "eventId": 1,
-      "eventName": "Ngemi 5.0",
-      "eventDate": "2025-04-29",
-      "id": 4,
-      "tickettype": "VIP"
-    },
-    {
-      "ticketNumber": "6777477410266670",
-      "attendeeId": 7,
-      "attendeeName": "Mukoma",
-      "eventId": 4,
-      "eventName": "Raha Fest",
-      "eventDate": "2025-05-09",
-      "id": 6,
-      "tickettype": "Regular"
-    },
-    {
-      "ticketNumber": "2329521382801388",
-      "attendeeId": 8,
-      "attendeeName": "Mel'd",
-      "eventId": 5,
-      "eventName": "Sol-Fest",
-      "eventDate": "2025-11-29",
-      "id": 7,
-      "tickettype": "VVIP"
-    },
-    {
-      "ticketNumber": "6121384481616241",
-      "attendeeId": "9",
-      "attendeeName": "Ann ",
-      "eventId": "6",
-      "eventName": "Amapiano Tour",
-      "eventDate": "2025-04-15",
-      "tickettype": "Regular",
-      "id": 8
-    },
-    {
-      "ticketNumber": "0340356772976979",
-      "attendeeId": "10",
-      "attendeeName": "Watson",
+      "ticketNumber": "4912221479713088",
+      "attendeeId": "1",
+      "attendeeName": "Justin",
       "eventId": "2",
-      "eventName": "Ngemi 6.0",
-      "eventDate": "2025-04-26",
+      "eventName": "Ngemi 5.0",
+      "eventDate": "2025-05-10",
+      "tickettype": "Regular",
+      "id": 1
+    },
+    {
+      "ticketNumber": "5872126537455283",
+      "attendeeId": "2",
+      "attendeeName": "kamau peterson",
+      "eventId": "1",
+      "eventName": "Afro-fusion",
+      "eventDate": "2025-04-19",
+      "tickettype": "Regular",
+      "id": 2
+    },
+    {
+      "ticketNumber": "8081172879094410",
+      "attendeeId": "3",
+      "attendeeName": "John Doe",
+      "eventId": "3",
+      "eventName": "Sol-Fest",
+      "eventDate": "2025-05-09",
       "tickettype": "VVIP",
-      "id": 9
+      "id": 3
+    },
+    {
+      "ticketNumber": "3544483194388847",
+      "attendeeId": "1",
+      "attendeeName": "Justin",
+      "eventId": "1",
+      "eventName": "Afro-fusion",
+      "eventDate": "2025-04-19",
+      "tickettype": "VIP",
+      "id": 4
     }
   ]
 }

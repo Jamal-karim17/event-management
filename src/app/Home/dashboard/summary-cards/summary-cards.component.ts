@@ -25,4 +25,28 @@ export class SummaryCardsComponent {
   get ticketCount(): number {
     return this.tickets.length;
   }
+
+  // Calculate tickets per event
+  getTicketsPerEvent(): string {
+    if (this.eventCount === 0) return '0';
+    return (this.ticketCount / this.eventCount).toFixed(1);
+  }
+
+  // Get the most booked event
+  getMostBookedEvent(): string {
+    if (!this.tickets.length || !this.events.length) return 'N/A';
+
+    const counts: { [eventName: string]: number } = {};
+
+    this.tickets.forEach(ticket => {
+      const event = this.events.find(e => e.id === ticket.eventId);
+      const eventName = event?.name || 'Unknown';
+      counts[eventName] = (counts[eventName] || 0) + 1;
+    });
+
+    const mostBooked = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
+    return mostBooked ? `${mostBooked[0]} (${mostBooked[1]})` : 'N/A';
+  }
+
+ 
 }
