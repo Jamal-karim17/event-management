@@ -1,0 +1,21 @@
+<div class="dashboard-cards">
+    <div class="card">
+      <div class="icon">📅</div>
+      <h3>{{ eventCount }}</h3>
+      <p>Events</p>
+      <a routerLink="/createevent" class="btn">+ Create Event</a>
+    </div>
+    <div class="card">
+      <div class="icon">👥</div>
+      <h3>{{ attendeeCount }}</h3>
+      <p>Attendees</p>
+      <a routerLink="/attendees/create" class="btn">+ Register Attendee</a>
+    </div>
+    <div class="card">
+      <div class="icon">🎫</div>
+      <h3>{{ ticketCount }}</h3>
+      <p>Tickets</p>
+      <a routerLink="/tickets/issue" class="btn">+ Issue Ticket</a>
+    </div>
+  </div>
+  

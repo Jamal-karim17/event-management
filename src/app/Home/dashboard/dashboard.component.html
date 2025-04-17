@@ -1,34 +1,16 @@
-<div class="dashboard-container">
-    <h2 class="dashboard-title">Event Manager Overview</h2>
-    <div class="dashboard-cards">
-      <div class="dashboard-card bg-primary">
-        <h5>Total Events</h5>
-        <p>{{ eventCount }}</p>
-      </div>
-  
-      <div class="dashboard-card bg-success">
-        <h5>Total Attendees</h5>
-        <p>{{ attendeeCount }}</p>
-      </div>
-  
-      <div class="dashboard-card bg-warning">
-        <h5>Total Tickets Issued</h5>
-        <p>{{ ticketCount }}</p>
-      </div>
-    </div>
-  
-    <!-- Footer Section -->
-    <footer class="dashboard-footer mt-5">
-      <hr />
-      <div class="footer-content">
-        <p class="footer-text">
-          Last updated: {{ today | date: 'short' }}
-        </p>
-        <p class="footer-text text-muted">
-          System Status: <span class="badge bg-success">Operational</span>
-        </p>
-        <p class="footer-credit">Event Management System © 2025</p>
-      </div>
-    </footer>
-  </div>
-  
+<div class="home-container">
+  <h1>🎉 Welcome to the Event Management Dashboard</h1>
+  <p>Manage events, attendees, and tickets all in one place.</p>
+
+  <app-summary-cards 
+    [events]="events" 
+    [attendees]="attendees" 
+    [tickets]="tickets">
+  </app-summary-cards>
+
+ 
+
+  <app-upcoming-events 
+    [upcomingEvents]="upcomingEvents">
+  </app-upcoming-events>
+</div>

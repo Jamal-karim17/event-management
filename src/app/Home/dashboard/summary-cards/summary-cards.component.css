@@ -1,0 +1,82 @@
+/* General Styles for the Dashboard Cards */
+.dashboard-cards {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 30px;
+    margin: 0 auto;
+    max-width: 1200px;
+    flex-wrap: wrap;
+  }
+  
+  /* Individual Card Styles */
+  .card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    width: 250px;
+    padding: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card .icon {
+    font-size: 50px;
+    color: #4caf50;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+  }
+  
+  .card:hover .icon {
+    color: #00796b;
+  }
+  
+  .card h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 20px;
+  }
+  
+  .card a {
+    display: inline-block;
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card a:hover {
+    background-color: #388e3c;
+  }
+  
+  .card a:focus {
+    outline: none;
+    background-color: #388e3c;
+  }
+  
+  .card p, .card h3, .card .icon {
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover p,
+  .card:hover h3,
+  .card:hover .icon {
+    transform: translateY(-5px);
+  }
+  

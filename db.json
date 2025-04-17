@@ -8,18 +8,11 @@
       "capacity": 700
     },
     {
-      "id": "2",
-      "name": "Ngemi 6.0",
-      "location": "San Francisco",
-      "date": "2025-04-22",
-      "capacity": 900
-    },
-    {
       "id": 3,
       "name": "Afro-fusion",
       "location": "San Francisco",
       "date": "2025-04-15",
-      "capacity": 1000
+      "capacity": 2000
     },
     {
       "id": 4,
@@ -33,7 +26,7 @@
       "name": "Sol-Fest",
       "location": "Nairobi-Ngong Racecourse",
       "date": "2025-11-29",
-      "capacity": 8500
+      "capacity": 1000
     },
     {
       "id": 6,
@@ -41,29 +34,22 @@
       "location": "Nairobi-Kilimani",
       "date": "2025-04-15",
       "capacity": 1000
+    },
+    {
+      "id": 2,
+      "name": "Ngemi 6.0",
+      "location": "Nakuru",
+      "date": "2025-04-26",
+      "capacity": 100
     }
   ],
   "attendees": [
-    {
-      "fullName": "Justin",
-      "email": "justinnjogu35@gmail.com",
-      "eventId": 2,
-      "eventName": "Ngemi 6.0",
-      "id": 1
-    },
     {
       "fullName": "kamau peterson",
       "email": "habibi@gmail.com",
       "eventId": 1,
       "eventName": "Ngemi 5.0",
       "id": 2
-    },
-    {
-      "fullName": "John Doe",
-      "email": "teacher@gmail.com",
-      "eventId": 2,
-      "eventName": "Ngemi 6.0",
-      "id": 3
     },
     {
       "fullName": "shokman",
@@ -106,19 +92,16 @@
       "eventId": 6,
       "eventName": "Amapiano Tour",
       "id": 9
+    },
+    {
+      "fullName": "Watson",
+      "email": "watson@gmail.com",
+      "eventId": 2,
+      "eventName": "Ngemi 6.0",
+      "id": 10
     }
   ],
   "tickets": [
-    {
-      "ticketNumber": "6742104357822655",
-      "attendeeId": 1,
-      "attendeeName": "Justin",
-      "eventId": 2,
-      "eventName": "Ngemi 6.0",
-      "eventDate": "2025-04-22",
-      "id": 1,
-      "tickettype": "Regular"
-    },
     {
       "ticketNumber": "6162657575253112",
       "attendeeId": 4,
@@ -150,16 +133,6 @@
       "tickettype": "VIP"
     },
     {
-      "ticketNumber": "0155905040038177",
-      "attendeeId": 6,
-      "attendeeName": "Edwin",
-      "eventId": 2,
-      "eventName": "Ngemi 6.0",
-      "eventDate": "2025-04-22",
-      "id": 5,
-      "tickettype": "Regular"
-    },
-    {
       "ticketNumber": "6777477410266670",
       "attendeeId": 7,
       "attendeeName": "Mukoma",
@@ -188,6 +161,16 @@
       "eventDate": "2025-04-15",
       "tickettype": "Regular",
       "id": 8
+    },
+    {
+      "ticketNumber": "0340356772976979",
+      "attendeeId": "10",
+      "attendeeName": "Watson",
+      "eventId": "2",
+      "eventName": "Ngemi 6.0",
+      "eventDate": "2025-04-26",
+      "tickettype": "VVIP",
+      "id": 9
     }
   ]
 }

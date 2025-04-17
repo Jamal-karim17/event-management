@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,10 @@ import { IssueTicketComponent } from './Tickets/issue-ticket/issue-ticket.compon
 import { TicketListComponent } from './Tickets/ticket-list/ticket-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './Home/dashboard/dashboard.component';
+import { SummaryCardsComponent } from './Home/dashboard/summary-cards/summary-cards.component';
+
+import { UpcomingEventsComponent } from './Home/dashboard/upcoming-events/upcoming-events.component';
+
 
 @NgModule({
   declarations: [
@@ -24,13 +29,18 @@ import { DashboardComponent } from './Home/dashboard/dashboard.component';
     AttendeeListComponent,
     IssueTicketComponent,
     TicketListComponent,
-    DashboardComponent
+    DashboardComponent,
+    SummaryCardsComponent,
+    
+    UpcomingEventsComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgChartsModule,
     FormsModule
     
   ],

@@ -1,0 +1,13 @@
+<div class="upcoming-events">
+    <h2>📅 Upcoming Events</h2>
+    <ul *ngIf="upcomingEvents.length > 0; else noUpcoming">
+      <li *ngFor="let event of upcomingEvents">
+        <strong>{{ event.name }}</strong> - {{ event.date | date: 'mediumDate' }}
+        <a [routerLink]="'/eventlist'">View Details</a>
+      </li>
+    </ul>
+    <ng-template #noUpcoming>
+      <p>No upcoming events</p>
+    </ng-template>
+  </div>
+  
