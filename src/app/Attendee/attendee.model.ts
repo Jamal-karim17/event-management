@@ -1,11 +1,11 @@
 export class Attendee {
   constructor(
-    public id: number = 0,           
-    public fullName: string = '',    
-    public email: string = '',       
-    public eventId: number = 0,     
-    public eventName: string = '' //npx json-server --watch db.json --port 3000
-
-   
+    public id: number,
+    public name: string,
+    public email: string,
+    public phone: string,
+    public idCard: string,
+    public event_id: number,   // match backend naming
+    public eventname?: string // optional, added manually
   ) {}
 }

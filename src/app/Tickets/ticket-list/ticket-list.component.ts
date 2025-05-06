@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TicketService } from 'src/app/Services/ticket.service';
-import { Ticket } from '../ticket.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,46 +7,62 @@ import { Router } from '@angular/router';
   templateUrl: './ticket-list.component.html',
 })
 export class TicketListComponent implements OnInit {
-  tickets: Ticket[] = [];
-  selectedTicket: Ticket | null = null;
+  tickets: any[] = [];
+  selectedTicket: any = null;
 
-  constructor(private ticketService: TicketService, private router: Router) {}
+  constructor(
+    private ticketService: TicketService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.ticketService.getTickets().subscribe((tickets) => {
-      this.tickets = tickets;
-    });
+    this.loadTickets();
   }
 
-  view(id: number): void {
-    this.ticketService.getTicketById(id).subscribe((ticket) => {
-      if (ticket) {
-        this.selectedTicket = ticket;
-        const modalElement = document.getElementById('ticketModal');
-        if (modalElement) {
-          const modal = new (window as any).bootstrap.Modal(modalElement);
-          modal.show();
-        }
+  // Fetch all tickets from the service
+  loadTickets(): void {
+    this.ticketService.getTickets().subscribe({
+      next: (tickets: any[]) => {
+        console.log('Fetched tickets:', tickets);
+        this.tickets = tickets;
+      },
+      error: (err) => {
+        console.error('Error loading tickets:', err);
       }
     });
   }
 
-  edit(id: number): void {
-    this.router.navigate(['/tickets/edit', id]);
+  // View ticket details in Bootstrap modal
+  view(ticketNumber: string): void {
+    const selected = this.tickets.find(t => t.ticket_number === ticketNumber);
+    if (selected) {
+      this.selectedTicket = selected;
+
+      // Get modal element and initialize it using Bootstrap Modal class
+      const modalElement = document.getElementById('ticketModal');
+      if (modalElement) {
+        const modal = new (window as any).bootstrap.Modal(modalElement);
+        modal.show();  // This opens the modal
+      }
+    }
   }
 
-  delete(id: number): void {
-    // Confirm the deletion with the user
+  // Navigate to the edit page
+  edit(ticketNumber: string): void {
+    this.router.navigate(['/tickets/edit', ticketNumber]);
+  }
+
+  // Delete ticket after confirmation
+  delete(ticketNumber: string): void {
     if (confirm('Are you sure you want to delete this ticket?')) {
-     
-      this.ticketService.deleteTicket(id).subscribe(() => {
-        
-        this.ticketService.getTickets().subscribe((tickets) => {
-        
-          this.tickets = tickets;
-        });
+      this.ticketService.deleteTicket(ticketNumber).subscribe({
+        next: () => {
+          this.loadTickets(); // Refresh the list after deletion
+        },
+        error: (err) => {
+          console.error('Error deleting ticket:', err);
+        }
       });
     }
   }
-  
 }

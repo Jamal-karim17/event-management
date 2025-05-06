@@ -18,7 +18,7 @@ const routes: Routes = [
 { path: 'attendees/edit/:id', component: RegisterAttendeeComponent },
 
 { path: 'tickets/issue', component: IssueTicketComponent },
-  { path: 'tickets/edit/:id', component: IssueTicketComponent }, // Edit mode reuses IssueTicketComponent
+{ path: 'tickets/edit/:ticketNumber', component: IssueTicketComponent },
   { path: 'tickets/list', component: TicketListComponent },
 
   {path: 'home', component: DashboardComponent},

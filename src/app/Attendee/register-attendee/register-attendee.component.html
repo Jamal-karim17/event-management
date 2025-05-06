@@ -1,43 +1,75 @@
 <div class="container mt-4">
-    <h3>{{ isEditMode ? 'Edit Attendee' : 'Register Attendee' }}</h3>
-    <form #attendeeForm="ngForm" (ngSubmit)="onSubmit(attendeeForm)">
-      <div class="mb-3">
-        <label for="fullName">Full Name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="fullName"
-          name="fullName"
-          [(ngModel)]="attendee.fullName"
-          required
-        />
-      </div>
-      <div class="mb-3">
-        <label for="email">Email</label>
-        <input
-          type="email"
-          class="form-control"
-          id="email"
-          name="email"
-          [(ngModel)]="attendee.email"
-          required
-        />
-      </div>
-      <div class="mb-3">
-        <label for="event">Event</label>
-        <select
-          class="form-control"
-          id="event"
-          name="eventId"
-          [(ngModel)]="attendee.eventId"
-          required
-        >
-          <option *ngFor="let event of events" [value]="event.id">{{ event.name }}</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-primary">
-        {{ isEditMode ? 'Update Attendee' : 'Register Attendee' }}
-      </button>
-    </form>
-  </div>
-  
+  <h3>{{ isEditMode ? 'Edit Attendee' : 'Register Attendee' }}</h3>
+  <form #attendeeForm="ngForm" (ngSubmit)="onSubmit(attendeeForm)">
+    <!-- Full Name -->
+    <div class="mb-3">
+      <label for="name">Full Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        [(ngModel)]="attendee.name"
+        required
+      />
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        [(ngModel)]="attendee.email"
+        required
+      />
+    </div>
+
+    <!-- Phone -->
+    <div class="mb-3">
+      <label for="phone">Phone</label>
+      <input
+        type="tel"
+        class="form-control"
+        id="phone"
+        name="phone"
+        [(ngModel)]="attendee.phone"
+        required
+      />
+    </div>
+
+    <!-- ID Card -->
+    <div class="mb-3">
+      <label for="idCard">ID Card</label>
+      <input
+        type="text"
+        class="form-control"
+        id="idCard"
+        name="idCard"
+        [(ngModel)]="attendee.idCard"
+        required
+      />
+    </div>
+
+    <!-- Event -->
+    <div class="mb-3">
+      <label for="event">Event</label>
+      <select
+        class="form-control"
+        id="event"
+        name="event_id"
+        [(ngModel)]="attendee.event_id"
+        required
+      >
+        <!-- Event options loop -->
+        <option *ngFor="let event of events" [value]="event.id">{{ event.name }}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      {{ isEditMode ? 'Update Attendee' : 'Register Attendee' }}
+    </button>
+  </form>
+</div>

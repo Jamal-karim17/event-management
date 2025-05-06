@@ -1,52 +1,52 @@
 <div class="container mt-4">
-    <h3>Ticket List</h3>
-    <table class="table table-bordered table-striped">
-      <thead class="table-dark">
-        <tr>
-          <th>Ticket Number</th>
-          <th>Attendee</th>
-          <th>Event</th>
-          <th>Event Date</th>
-          <th>Ticket Type</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let ticket of tickets">
-          <td>{{ ticket.ticketNumber }}</td>
-          <td>{{ ticket.attendeeName }}</td>
-          <td>{{ ticket.eventName }}</td>
-          <td>{{ ticket.eventDate | date }}</td>
-          <td>{{ ticket.tickettype }}</td>
-          <td>
-            <button class="btn btn-info btn-sm me-2" (click)="view(ticket.id)">View</button>
-            <button class="btn btn-warning btn-sm me-2" (click)="edit(ticket.id)">Edit</button>
-            <button class="btn btn-danger btn-sm" (click)="delete(ticket.id)">Cancel</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <h3>Ticket List</h3>
   
-  <!-- Ticket View Modal -->
-  <div class="modal fade" id="ticketModal" tabindex="-1" aria-labelledby="ticketModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content" *ngIf="selectedTicket">
-        <div class="modal-header">
-          <h5 class="modal-title" id="ticketModalLabel">Ticket Details</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p><strong>Ticket Number:</strong> {{ selectedTicket.ticketNumber }}</p>
-          <p><strong>Attendee:</strong> {{ selectedTicket.attendeeName }}</p>
-          <p><strong>Event:</strong> {{ selectedTicket.eventName }}</p>
-          <p><strong>Event Date:</strong> {{ selectedTicket.eventDate | date }}</p>
-          <p><strong>Ticket Type:</strong> {{ selectedTicket.tickettype }}</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Ticket Number</th>
+        <th>Attendee</th>
+        <th>Event</th>
+        <th>Event Date</th>
+        <th>Ticket Type</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticket of tickets">
+        <td>{{ ticket.ticket_number }}</td>
+        <td>{{ ticket.attendee_name }}</td>
+        <td>{{ ticket.event_name }}</td>
+        <td>{{ ticket.date | date }}</td> <!-- Use Angular's date pipe -->
+        <td>{{ ticket.ticket_type }}</td>
+        <td>
+          <button class="btn btn-info btn-sm me-2" (click)="view(ticket.ticket_number)">View</button>
+          <button class="btn btn-warning btn-sm me-2" (click)="edit(ticket.ticket_number)">Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="delete(ticket.ticket_number)">Cancel</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Ticket View Modal -->
+<div class="modal fade" id="ticketModal" tabindex="-1" aria-labelledby="ticketModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" *ngIf="selectedTicket">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ticketModalLabel">Ticket Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Ticket Number:</strong> {{ selectedTicket.ticket_number }}</p>
+        <p><strong>Attendee:</strong> {{ selectedTicket.attendee_name }}</p>
+        <p><strong>Event:</strong> {{ selectedTicket.event_name }}</p>
+        <p><strong>Event Date:</strong> {{ selectedTicket.date | date }}</p>
+        <p><strong>Ticket Type:</strong> {{ selectedTicket.ticket_type }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
-  
+</div>

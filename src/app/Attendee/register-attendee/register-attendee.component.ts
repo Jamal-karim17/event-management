@@ -11,8 +11,8 @@ import { Event } from 'src/app/Events/event.model';
   templateUrl: './register-attendee.component.html',
 })
 export class RegisterAttendeeComponent implements OnInit {
-  events: Event[] = []; // List of events for the dropdown
-  attendee: Attendee = new Attendee(0, '', '', 0, ''); // Initializing ID with 0 (but it will be updated)
+  events: Event[] = [];
+  attendee: Attendee = new Attendee(0, '', '', '', '', 0, '');
   isEditMode: boolean = false;
 
   constructor(
@@ -23,15 +23,13 @@ export class RegisterAttendeeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Load events for the dropdown
-    this.attendeeService.getEvents().subscribe((data) => {
+    this.eventService.getEvents().subscribe((data) => {
       this.events = data;
     });
 
-    // Check if an attendee id is present in the route (for editing)
     const idParam = this.route.snapshot.paramMap.get('id');
     if (idParam) {
-      const id = +idParam; // Convert string ID to number
+      const id = +idParam;
       this.attendeeService.getAttendeeById(id).subscribe((existingAttendee) => {
         if (existingAttendee) {
           this.attendee = { ...existingAttendee };
@@ -43,47 +41,32 @@ export class RegisterAttendeeComponent implements OnInit {
 
   onSubmit(form: NgForm): void {
     if (!form.valid) return;
-  
-    this.attendee.eventId = +this.attendee.eventId;
-  
-    this.eventService.getEventById(this.attendee.eventId).subscribe(
+
+    // Ensure event_id is a number
+    this.attendee.event_id = +this.attendee.event_id;
+
+    this.eventService.getEventById(this.attendee.event_id).subscribe(
       (selectedEvent) => {
         if (!selectedEvent) return;
-  
-        this.attendee.eventName = selectedEvent.name;
-  
+
+        this.attendee.eventname = selectedEvent.name;
+
         if (this.isEditMode) {
-          // Edit mode: PUT request
           this.attendeeService.updateAttendee(this.attendee).subscribe(
-            () => {
-              this.router.navigate(['/attendees/list']);
-            },
-            (error) => {
-              console.error('Error updating attendee:', error);
-            }
+            () => this.router.navigate(['/attendees/list']),
+            (error) => console.error('Error updating attendee:', error)
           );
         } else {
-          // Add mode: POST request
           const newAttendee = { ...this.attendee };
           delete (newAttendee as any).id;
-  
+
           this.attendeeService.addAttendee(newAttendee).subscribe(
-            () => {
-              this.router.navigate(['/attendees/list']);
-            },
-            (error) => {
-              console.error('Error adding attendee:', error);
-            }
+            () => this.router.navigate(['/attendees/list']),
+            (error) => console.error('Error adding attendee:', error)
           );
         }
       },
-      (error) => {
-        console.error('Error fetching event details:', error);
-      }
+      (error) => console.error('Error fetching event details:', error)
     );
   }
-  
-
-}  
-  
-
+}

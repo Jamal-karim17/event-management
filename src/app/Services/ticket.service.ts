@@ -1,47 +1,85 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { Ticket } from '../Tickets/ticket.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TicketService {
-  private apiUrl = 'http://localhost:3000/tickets';
+  private apiUrl = 'http://localhost:3000/api/tickets';
 
   constructor(private http: HttpClient) {}
 
-  // Generate a random 16-digit ticket number
-  generateTicketNumber(): string {
-    return Math.floor(Math.random() * 1e16).toString().padStart(16, '0');
-  }
-
   // Get all tickets
   getTickets(): Observable<Ticket[]> {
-    return this.http.get<Ticket[]>(this.apiUrl);
+    return this.http.get<Ticket[]>(this.apiUrl).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  // Get a ticket by ID (ensure the ID is passed as a string)
-  getTicketById(id: string | number): Observable<Ticket> {
-    return this.http.get<Ticket>(`${this.apiUrl}/${String(id)}`); 
+  // Get a ticket by ID (numeric or string ID from URL param)
+  getTicketById(ticketNumber: string | number): Observable<Ticket> {
+    return this.http.get<Ticket>(`${this.apiUrl}/${ticketNumber}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  // Get a ticket by ticketNumber field (used in edit mode via route param)
+  getTicketByNumber(ticketNumber: string): Observable<Ticket | undefined> {
+    return this.getTickets().pipe(
+      map((tickets: Ticket[]) =>
+        tickets.find(ticket => ticket.ticketNumber === ticketNumber)
+      ),
+      catchError(this.handleError)
+    );
   }
 
   // Add a new ticket
   addTicket(ticket: Ticket): Observable<Ticket> {
-    const newTicket = {
-      ...ticket,
-      ticketNumber: this.generateTicketNumber()
+    const ticketPayload = {
+      ticket_type: ticket.ticketType,
+      attendee_id: ticket.attendeeId,
+      event_id: ticket.eventId,
     };
-    return this.http.post<Ticket>(this.apiUrl, newTicket);
+
+    return this.http.post<Ticket>(this.apiUrl, ticketPayload).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  // Update a ticket (ensure the ID is passed as a string)
+  // Update an existing ticket
   updateTicket(ticket: Ticket): Observable<Ticket> {
-    return this.http.put<Ticket>(`${this.apiUrl}/${String(ticket.id)}`, ticket); // Convert to string
+    const ticketPayload = {
+      ticket_type: ticket.ticketType,
+      attendee_id: ticket.attendeeId,
+      event_id: ticket.eventId,
+    };
+
+    return this.http.put<Ticket>(
+      `${this.apiUrl}/${ticket.ticketNumber}`,
+      ticketPayload
+    ).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  // Delete a ticket by ID (ensure the ID is passed as a string)
-  deleteTicket(id: string | number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${String(id)}`); 
+  // Delete a ticket by ticket number
+  deleteTicket(ticketNumber: string | number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${ticketNumber}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  // Error handling
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    let errorMessage = 'An unknown error occurred!';
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = `Client Error: ${error.error.message}`;
+    } else {
+      errorMessage = `Server Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(() => new Error(errorMessage));
   }
 }

@@ -1,33 +1,77 @@
 <div class="container mt-4">
   <h3>{{ isEditMode ? 'Edit Ticket' : 'Issue Ticket' }}</h3>
   <form #ticketForm="ngForm" (ngSubmit)="onSubmit(ticketForm)">
+
+    <!-- Show Ticket Number (only in edit mode) -->
+    <div class="mb-3" *ngIf="isEditMode">
+      <label for="ticketNumber">Ticket Number</label>
+      <input
+        type="text"
+        id="ticketNumber"
+        class="form-control"
+        [value]="ticket.ticketNumber"
+        disabled
+      />
+      <!-- Hidden input to carry the ticket number -->
+      <input
+        type="hidden"
+        name="ticketNumber"
+        [(ngModel)]="ticket.ticketNumber"
+      />
+    </div>
+
+    <!-- Attendee Selection -->
     <div class="mb-3">
       <label for="attendee">Attendee</label>
-      <select id="attendee" name="attendeeId" class="form-control" [(ngModel)]="ticket.attendeeId" required>
+      <select
+        id="attendee"
+        name="attendeeId"
+        class="form-control"
+        [(ngModel)]="ticket.attendeeId"
+        (change)="onAttendeeChange()"
+        required
+      >
+        <option value="" disabled>Select Attendee</option>
         <option *ngFor="let attendee of attendees" [value]="attendee.id">
-          {{ attendee.fullName }}
+          {{ attendee.name }}
         </option>
       </select>
     </div>
 
+    <!-- Event Selection -->
     <div class="mb-3">
       <label for="event">Event</label>
-      <select id="event" name="eventId" class="form-control" [(ngModel)]="ticket.eventId" required>
+      <select
+        id="event"
+        name="eventId"
+        class="form-control"
+        [(ngModel)]="ticket.eventId"
+        required
+      >
+        <option value="" disabled>Select Event</option>
         <option *ngFor="let event of events" [value]="event.id">
           {{ event.name }}
         </option>
       </select>
     </div>
 
+    <!-- Ticket Type -->
     <div class="mb-3">
       <label for="ticketType">Ticket Type</label>
-      <select id="ticketType" name="tickettype" class="form-control" [(ngModel)]="ticket.tickettype" required>
+      <select
+        id="ticketType"
+        name="ticketType"
+        class="form-control"
+        [(ngModel)]="ticket.ticketType"
+        required
+      >
         <option value="Regular">Regular</option>
         <option value="VIP">VIP</option>
         <option value="VVIP">VVIP</option>
       </select>
     </div>
 
+    <!-- Submit Button -->
     <button type="submit" class="btn btn-primary">
       {{ isEditMode ? 'Update Ticket' : 'Issue Ticket' }}
     </button>

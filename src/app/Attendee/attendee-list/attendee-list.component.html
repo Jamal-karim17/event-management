@@ -1,49 +1,48 @@
 <div class="container mt-4">
-    <h3>Attendee List</h3>
-    <table class="table table-bordered table-striped">
-      <thead class="table-dark">
-        <tr>
-          <th>ID</th>
-          <th>Full Name</th>
-          <th>Email</th>
-          <th>Event Name</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let attendee of attendees">
-          <td>{{ attendee.id }}</td>
-          <td>{{ attendee.fullName }}</td>
-          <td>{{ attendee.email }}</td>
-          <td>{{ attendee.eventName }}</td>
-          <td>
-            <button class="btn btn-info btn-sm me-2" (click)="view(attendee.id)">View</button>
-            <button class="btn btn-warning btn-sm me-2" (click)="edit(attendee.id)">Edit</button>
-            <button class="btn btn-danger btn-sm" (click)="delete(attendee.id)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
-  <!-- Attendee View Modal -->
-  <div class="modal fade" id="attendeeViewModal" tabindex="-1" aria-labelledby="attendeeViewModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content" *ngIf="selectedAttendee">
-        <div class="modal-header">
-          <h5 class="modal-title" id="attendeeViewModalLabel">Attendee Details</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p><strong>ID:</strong> {{ selectedAttendee.id }}</p>
-          <p><strong>Full Name:</strong> {{ selectedAttendee.fullName }}</p>
-          <p><strong>Email:</strong> {{ selectedAttendee.email }}</p>
-          <p><strong>Event:</strong> {{ selectedAttendee.eventName }}</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
+  <h3>Attendee List</h3>
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Event Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let attendee of attendees">
+        <td>{{ attendee.id }}</td>
+        <td>{{ attendee.name }}</td>
+        <td>{{ attendee.email }}</td>
+        <td>{{ attendee.eventname || 'N/A' }}</td>
+        <td>
+          <button class="btn btn-info btn-sm me-2" (click)="view(attendee.id)">View</button>
+          <button class="btn btn-warning btn-sm me-2" (click)="edit(attendee.id)">Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="delete(attendee.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Attendee View Modal -->
+<div class="modal fade" id="attendeeViewModal" tabindex="-1" aria-labelledby="attendeeViewModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" *ngIf="selectedAttendee">
+      <div class="modal-header">
+        <h5 class="modal-title" id="attendeeViewModalLabel">Attendee Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>ID:</strong> {{ selectedAttendee.id }}</p>
+        <p><strong>Name:</strong> {{ selectedAttendee.name }}</p>
+        <p><strong>Email:</strong> {{ selectedAttendee.email }}</p>
+        <p><strong>Event:</strong> {{ selectedAttendee.eventname || 'N/A' }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
-  
+</div>
