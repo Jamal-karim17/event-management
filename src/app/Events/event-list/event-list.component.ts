@@ -31,9 +31,9 @@ export class EventListComponent implements OnInit {
     });
   }
 
-  // Get number of tickets booked for a specific event by event name
-  getTicketCount(eventName: string): number {
-    return this.tickets.filter(t => t.eventName === eventName).length;
+  // Get number of tickets booked for a specific event by event ID
+  getTicketCount(eventId: number): number {
+    return this.tickets.filter(t => t.eventId === eventId).length;
   }
 
   view(id: number): void {

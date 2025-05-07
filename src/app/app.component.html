@@ -1,10 +1,9 @@
 <div class="d-flex">
-    <!-- Sidebar -->
-    <app-sidebar></app-sidebar>
-  
-    <!-- Main Content -->
-    <div class="main-content flex-grow-1 p-3" style="margin-left: 250px;">
-      <router-outlet></router-outlet>
-    </div>
+  <!-- Sidebar - only show if not on the login or signup page -->
+  <app-sidebar *ngIf="!isLoginPage && !isSignupPage"></app-sidebar>
+
+  <!-- Main Content - Adjust margin if on the login or signup page -->
+  <div class="main-content flex-grow-1 p-3" [ngStyle]="{'margin-left': (isLoginPage || isSignupPage) ? '0' : '250px'}">
+    <router-outlet></router-outlet>
   </div>
-  
+</div>

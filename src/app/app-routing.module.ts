@@ -7,6 +7,8 @@ import { RegisterAttendeeComponent } from './Attendee/register-attendee/register
 import { IssueTicketComponent } from './Tickets/issue-ticket/issue-ticket.component';
 import { TicketListComponent } from './Tickets/ticket-list/ticket-list.component';
 import { DashboardComponent } from './Home/dashboard/dashboard.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
 
 const routes: Routes = [
   { path: 'createevent', component: CreateEventComponent},
@@ -21,8 +23,11 @@ const routes: Routes = [
 { path: 'tickets/edit/:ticketNumber', component: IssueTicketComponent },
   { path: 'tickets/list', component: TicketListComponent },
 
+  { path: 'login', component: LoginComponent },
+  {path: 'signup', component: SignUpComponent},
+
   {path: 'home', component: DashboardComponent},
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   
 ];
 

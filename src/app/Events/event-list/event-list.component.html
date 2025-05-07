@@ -8,7 +8,7 @@
         <th>Location</th>
         <th>Date</th>
         <th>Capacity</th>
-        <th>Tickets Booked</th> <!-- New Column -->
+        <th>Tickets Booked</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -17,9 +17,9 @@
         <td>{{ event.id }}</td>
         <td>{{ event.name }}</td>
         <td>{{ event.location }}</td>
-        <td>{{ event.date }}</td>
+        <td>{{ event.date | date: 'dd/MM/yyyy'}}</td>
         <td>{{ event.capacity }}</td>
-        <td>{{ getTicketCount(event.name) }}</td> <!-- Display booked tickets -->
+        <td>{{ getTicketCount(event.id) }}</td> 
         <td>
           <button class="btn btn-info btn-sm me-2" (click)="view(event.id)">View</button>
           <button class="btn btn-warning btn-sm me-2" (click)="edit(event.id)">Edit</button>
@@ -42,9 +42,9 @@
         <p><strong>ID:</strong> {{ selectedEvent.id }}</p>
         <p><strong>Name:</strong> {{ selectedEvent.name }}</p>
         <p><strong>Location:</strong> {{ selectedEvent.location }}</p>
-        <p><strong>Date:</strong> {{ selectedEvent.date }}</p>
+        <p><strong>Date:</strong> {{ selectedEvent.date  | date: 'yyyy-MM-dd'}}</p>
         <p><strong>Capacity:</strong> {{ selectedEvent.capacity }}</p>
-        <p><strong>Tickets Booked:</strong> {{ getTicketCount(selectedEvent.name) }}</p> <!-- Show inside Modal too -->
+        <p><strong>Tickets Booked:</strong> {{ getTicketCount(selectedEvent.id) }}</p> <!-- Show inside Modal too -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

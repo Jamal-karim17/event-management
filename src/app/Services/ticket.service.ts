@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Ticket } from '../Tickets/ticket.model';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,18 +11,18 @@ import { Ticket } from '../Tickets/ticket.model';
 export class TicketService {
   private apiUrl = 'http://localhost:3000/api/tickets';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   // Get all tickets
   getTickets(): Observable<Ticket[]> {
-    return this.http.get<Ticket[]>(this.apiUrl).pipe(
+    return this.http.get<Ticket[]>(this.apiUrl, { headers: this.getAuthHeaders() }).pipe(
       catchError(this.handleError)
     );
   }
 
   // Get a ticket by ID (numeric or string ID from URL param)
   getTicketById(ticketNumber: string | number): Observable<Ticket> {
-    return this.http.get<Ticket>(`${this.apiUrl}/${ticketNumber}`).pipe(
+    return this.http.get<Ticket>(`${this.apiUrl}/${ticketNumber}`, { headers: this.getAuthHeaders() }).pipe(
       catchError(this.handleError)
     );
   }
@@ -44,7 +45,7 @@ export class TicketService {
       event_id: ticket.eventId,
     };
 
-    return this.http.post<Ticket>(this.apiUrl, ticketPayload).pipe(
+    return this.http.post<Ticket>(this.apiUrl, ticketPayload, { headers: this.getAuthHeaders() }).pipe(
       catchError(this.handleError)
     );
   }
@@ -59,7 +60,8 @@ export class TicketService {
 
     return this.http.put<Ticket>(
       `${this.apiUrl}/${ticket.ticketNumber}`,
-      ticketPayload
+      ticketPayload,
+      { headers: this.getAuthHeaders() }
     ).pipe(
       catchError(this.handleError)
     );
@@ -67,9 +69,17 @@ export class TicketService {
 
   // Delete a ticket by ticket number
   deleteTicket(ticketNumber: string | number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${ticketNumber}`).pipe(
+    return this.http.delete<void>(`${this.apiUrl}/${ticketNumber}`, { headers: this.getAuthHeaders() }).pipe(
       catchError(this.handleError)
     );
+  }
+
+  // Get the Authorization Headers
+  private getAuthHeaders(): HttpHeaders {
+    const token = this.authService.getToken(); // Get token from AuthService
+    return new HttpHeaders({
+      'Authorization': `Bearer ${token}`  // Include token in the Authorization header
+    });
   }
 
   // Error handling

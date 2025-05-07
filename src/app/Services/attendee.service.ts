@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { Attendee } from '../Attendee/attendee.model';
 import { EventService } from './event.service';
 import { Event } from '../Events/event.model';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,11 +13,15 @@ import { Event } from '../Events/event.model';
 export class AttendeeService {
   private apiUrl = 'http://localhost:3000/api/attendees';
 
-  constructor(private http: HttpClient, private eventService: EventService) {}
+  constructor(
+    private http: HttpClient,
+    private eventService: EventService,
+    private authService: AuthService // Inject AuthService
+  ) {}
 
   // Get all attendees
   getAttendees(): Observable<Attendee[]> {
-    return this.http.get<Attendee[]>(this.apiUrl).pipe(
+    return this.http.get<Attendee[]>(this.apiUrl, { headers: this.getAuthHeaders() }).pipe(
       catchError((error) => {
         console.error('Error fetching attendees:', error);
         return throwError(error);  // Rethrow error so it's handled elsewhere
@@ -26,7 +31,7 @@ export class AttendeeService {
 
   // Get an attendee by ID
   getAttendeeById(id: number): Observable<Attendee> {
-    return this.http.get<Attendee>(`${this.apiUrl}/${id}`).pipe(
+    return this.http.get<Attendee>(`${this.apiUrl}/${id}`, { headers: this.getAuthHeaders() }).pipe(
       catchError((error) => {
         console.error(`Error fetching attendee with ID ${id}:`, error);
         return throwError(error);
@@ -40,7 +45,7 @@ export class AttendeeService {
     
     attendee.id = Number(attendee.id); // Ensure the ID is a number
     
-    return this.http.post<Attendee>(this.apiUrl, attendee).pipe(
+    return this.http.post<Attendee>(this.apiUrl, attendee, { headers: this.getAuthHeaders() }).pipe(
       catchError((error) => {
         console.error('Error adding attendee:', error);
         return throwError(error);
@@ -53,7 +58,7 @@ export class AttendeeService {
     return this.eventService.getEventById(attendee.event_id).pipe(  // Changed to event_id
       switchMap((event: Event | undefined) => {
         attendee.eventname = event?.name || ''; // Update event name
-        return this.http.put<Attendee>(`${this.apiUrl}/${attendee.id}`, attendee).pipe(
+        return this.http.put<Attendee>(`${this.apiUrl}/${attendee.id}`, attendee, { headers: this.getAuthHeaders() }).pipe(
           catchError((error) => {
             console.error(`Error updating attendee with ID ${attendee.id}:`, error);
             return throwError(error);
@@ -69,7 +74,7 @@ export class AttendeeService {
 
   // Delete an attendee by ID
   deleteAttendee(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
+    return this.http.delete<void>(`${this.apiUrl}/${id}`, { headers: this.getAuthHeaders() }).pipe(
       catchError((error) => {
         console.error(`Error deleting attendee with ID ${id}:`, error);
         return throwError(error);
@@ -96,5 +101,13 @@ export class AttendeeService {
         return throwError(error);
       })
     );
+  }
+
+  // Get the Authorization Headers
+  private getAuthHeaders(): HttpHeaders {
+    const token = this.authService.getToken(); // Get token from AuthService
+    return new HttpHeaders({
+      'Authorization': `Bearer ${token}`  // Include token in the Authorization header
+    });
   }
 }

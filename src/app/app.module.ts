@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgChartsModule } from 'ng2-charts';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,8 +15,10 @@ import { TicketListComponent } from './Tickets/ticket-list/ticket-list.component
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './Home/dashboard/dashboard.component';
 import { SummaryCardsComponent } from './Home/dashboard/summary-cards/summary-cards.component';
-
 import { UpcomingEventsComponent } from './Home/dashboard/upcoming-events/upcoming-events.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+
 
 
 @NgModule({
@@ -31,9 +33,9 @@ import { UpcomingEventsComponent } from './Home/dashboard/upcoming-events/upcomi
     TicketListComponent,
     DashboardComponent,
     SummaryCardsComponent,
-    
     UpcomingEventsComponent,
-    
+    LoginComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,10 +43,12 @@ import { UpcomingEventsComponent } from './Home/dashboard/upcoming-events/upcomi
     ReactiveFormsModule,
     HttpClientModule,
     NgChartsModule,
-    FormsModule
-    
+    FormsModule,
   ],
-  providers: [],
+  providers: [
+    // Add the AuthInterceptor to HTTP_INTERCEPTORS
+   
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
