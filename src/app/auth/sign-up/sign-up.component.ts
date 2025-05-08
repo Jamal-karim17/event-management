@@ -14,6 +14,8 @@ export class SignUpComponent {
   errorMessage: string = '';
   successMessage: string = '';
   isLoading: boolean = false;  // Track loading state
+  passwordVisible = false;
+confirmPasswordVisible = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -61,5 +63,12 @@ export class SignUpComponent {
         }
       }
     );
+  }
+  togglePasswordVisibility(): void {
+    this.passwordVisible = !this.passwordVisible;
+  }
+  
+  toggleConfirmPasswordVisibility(): void {
+    this.confirmPasswordVisible = !this.confirmPasswordVisible;
   }
 }

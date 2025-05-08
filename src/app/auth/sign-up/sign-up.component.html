@@ -1,33 +1,82 @@
 <div class="signup-container">
-    <div class="signup-form">
-      <h2>Create Account</h2>
-      <p class="description">Please fill in your details to create an account.</p>
-  
-      <form (ngSubmit)="onSubmit()" #signUpForm="ngForm">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" id="username" [(ngModel)]="username" name="username" class="form-control" required />
-        </div>
-  
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" [(ngModel)]="password" name="password" class="form-control" required />
-        </div>
-  
-        <div class="form-group">
-          <label for="confirmPassword">Confirm Password</label>
-          <input type="password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" class="form-control" required />
-        </div>
-  
-        <button type="submit" class="btn btn-primary" [disabled]="!signUpForm.form.valid">Sign Up</button>
-  
-        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
-        <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
-  
-        <div class="login-link">
-          <p>Already have an account? <a routerLink="/login">Login</a></p>
-        </div>
-      </form>
-    </div>
+  <div class="signup-image">
+    <img src="assets/dj2.jpg" alt="Team Image" />
   </div>
-  
+
+  <div class="signup-form">
+    <h2>Create Account</h2>
+    <p class="description">Please fill in your details to create an account.</p>
+
+    <form (ngSubmit)="onSubmit()" #signUpForm="ngForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <div class="input-group">
+          <input
+            type="text"
+            id="username"
+            [(ngModel)]="username"
+            name="username"
+            class="form-control"
+            required
+          />
+          <div class="input-group-append">
+            <i class="fas fa-user"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-group">
+          <input
+            [type]="passwordVisible ? 'text' : 'password'"
+            id="password"
+            [(ngModel)]="password"
+            name="password"
+            class="form-control"
+            required
+          />
+          <div class="input-group-append">
+            <i
+              class="fas"
+              [ngClass]="passwordVisible ? 'fa-eye-slash' : 'fa-eye'"
+              (click)="togglePasswordVisibility()"
+              style="cursor: pointer"
+            ></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <div class="input-group">
+          <input
+            [type]="confirmPasswordVisible ? 'text' : 'password'"
+            id="confirmPassword"
+            [(ngModel)]="confirmPassword"
+            name="confirmPassword"
+            class="form-control"
+            required
+          />
+          <div class="input-group-append">
+            <i
+              class="fas"
+              [ngClass]="confirmPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"
+              (click)="toggleConfirmPasswordVisibility()"
+              style="cursor: pointer"
+            ></i>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="!signUpForm.form.valid">Sign Up</button>
+
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+
+      <div class="login-link">
+        <p>Already have an account? <a routerLink="/login">Login</a></p>
+      </div>
+    </form>
+  </div>
+</div>

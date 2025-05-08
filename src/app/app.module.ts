@@ -18,6 +18,7 @@ import { SummaryCardsComponent } from './Home/dashboard/summary-cards/summary-ca
 import { UpcomingEventsComponent } from './Home/dashboard/upcoming-events/upcoming-events.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { CustomerDashboardComponent } from './customer/customer-dashboard/customer-dashboard.component';
 
 
 
@@ -36,6 +37,7 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
     UpcomingEventsComponent,
     LoginComponent,
     SignUpComponent,
+    CustomerDashboardComponent,
   ],
   imports: [
     BrowserModule,

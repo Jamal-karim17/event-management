@@ -8,18 +8,20 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'test-final';
+  title = 'Entertainment-x';
   isLoginPage: boolean = false;
   isSignupPage: boolean = false;
+  isMainDashboard: boolean = false;
 
   constructor(private router: Router) {
     // Check the current route after each navigation ends
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
-      // Set `isLoginPage` to true if the route is '/login'
-      this.isLoginPage = this.router.url === '/login';
-      this.isSignupPage = this.router.url.includes('/signup');
+      const currentUrl = this.router.url;
+      this.isLoginPage = currentUrl === '/login';
+      this.isSignupPage = currentUrl.includes('/signup');
+      this.isMainDashboard = currentUrl === '/customer';
     });
   }
 }

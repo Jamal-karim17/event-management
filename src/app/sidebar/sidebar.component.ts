@@ -27,6 +27,6 @@ export class SidebarComponent {
     localStorage.removeItem('authToken'); 
 
    
-    this.router.navigate(['/login']);
+    this.router.navigate(['/customer']);
   }
 }

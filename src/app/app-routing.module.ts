@@ -9,6 +9,7 @@ import { TicketListComponent } from './Tickets/ticket-list/ticket-list.component
 import { DashboardComponent } from './Home/dashboard/dashboard.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { CustomerDashboardComponent } from './customer/customer-dashboard/customer-dashboard.component';
 
 const routes: Routes = [
   { path: 'createevent', component: CreateEventComponent},
@@ -26,8 +27,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {path: 'signup', component: SignUpComponent},
 
+  { path: 'customer', component: CustomerDashboardComponent},
+
   {path: 'home', component: DashboardComponent},
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'customer', pathMatch: 'full' },
   
 ];
 
