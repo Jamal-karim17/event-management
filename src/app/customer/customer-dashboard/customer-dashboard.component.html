@@ -1,63 +1,73 @@
 <div class="dashboard-container">
-  <!-- Background Images -->
-  <img src="assets/dj3.jpg" alt="Background DJ" class="bg-image">
-  <img src="assets/head.jpg" alt="Top Banner" class="top-banner">
-
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo">
+    <!-- Background Images -->
+    <img src="assets/dj3.jpg" alt="Background DJ" class="bg-image">
+    <img src="assets/head.jpg" alt="Top Banner" class="top-banner">
+  
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="logo d-flex align-items-center">
         <img src="assets/head.jpg" alt="EntertainX Logo" class="logo-img">
         <span class="logo-text">Entertainment X</span>
       </div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search events..." />
-    </div>
-    <div class="nav-buttons">
-      <button routerLink="/login">Login</button>
-      <button routerLink="/attendees/create">Register</button>
-      <button routerLink="/contact">Contact</button>
-    </div>
-  </nav>
-
-  <!-- Events Section -->
-  <section class="events-section">
-    <h2>Upcoming Events</h2>
-    <div class="event-cards">
-      <div class="event-card" *ngFor="let event of upcomingEvents">
-        <h3>{{ event.name }}</h3>
-        <p>{{ event.location }}</p>
-        <p class="date">{{ event.date | date:'mediumDate' }}</p>
+      <div class="search-bar">
+        <input type="text" placeholder="Search events..." class="form-control" />
       </div>
-    </div>
-
-    <h2 class="mt-5">Past Events</h2>
-    <div class="event-cards">
-      <div class="event-card past" *ngFor="let event of pastEvents">
-        <h3>{{ event.name }}</h3>
-        <p>{{ event.location }}</p>
-        <p class="date">{{ event.date | date:'mediumDate' }}</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="socials">
-        <p>Follow Us</p>
-        <a href="#"><i class="bi bi-facebook"></i></a>
-        <a href="#"><i class="bi bi-twitter-x"></i></a>
-        <a href="#"><i class="bi bi-instagram"></i></a>
-      </div>
-      <div class="contact">
-        <p>📞 0717441125</p>
-        <p> 📧 njogujustingmail.com</p>
+      <div class="nav-buttons">
+        <button routerLink="/login" class="btn btn-link">Login</button>
         
+        <!-- Register Button to Toggle Dropdown Form -->
+        <button type="button" class="btn btn-primary" (click)="toggleRegisterForm()">
+          Register
+        </button>
+        
+        <button routerLink="/contact" class="btn btn-link">Contact</button>
       </div>
-      <div class="policies">
-        <a href="#">Privacy Policy</a> |
-        <a href="#">Terms of Use</a>
-      </div>
+    </nav>
+  
+    <!-- Dropdown Register Form -->
+    <div *ngIf="isRegisterFormVisible" class="register-dropdown mt-3">
+      <app-register-attendee></app-register-attendee>
     </div>
-  </footer>
-</div>
+  
+    <!-- Events Section -->
+    <section class="events-section">
+      <h2>Upcoming Events</h2>
+      <div class="event-cards">
+        <div class="event-card upcoming" *ngFor="let event of upcomingEvents">
+          <h3>{{ event.name }}</h3>
+          <p>{{ event.location }}</p>
+          <p class="date">{{ event.date | date:'mediumDate' }}</p>
+        </div>
+      </div>
+  
+      <h2 class="mt-5">Past Events</h2>
+      <div class="event-cards">
+        <div class="event-card past" *ngFor="let event of pastEvents">
+          <h3>{{ event.name }}</h3>
+          <p>{{ event.location }}</p>
+          <p class="date">{{ event.date | date:'mediumDate' }}</p>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="socials">
+          <p>Follow Us</p>
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-twitter-x"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+        </div>
+        <div class="contact">
+          <p>📞 0717441125</p>
+          <p> 📧 njogujustingmail.com</p>
+        </div>
+        <div class="policies">
+          <a href="#">Privacy Policy</a> |
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  

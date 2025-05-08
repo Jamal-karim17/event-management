@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
+// Define a response interface for both login and signup
 interface SignupResponse {
-  token: string; // Assuming the signup response has a token, similar to login
+  token: string; // Assuming the signup response has a token
   user: any; // Modify this based on the actual user object structure
+}
+
+interface LoginResponse {
+  token: string; // JWT token for authenticated sessions
+  user: any; // User data
 }
 
 @Injectable({
@@ -17,12 +24,24 @@ export class AuthService {
 
   // Signup method - Registers the user and gets a response
   signup(username: string, password: string): Observable<SignupResponse> {
-    return this.http.post<SignupResponse>(`${this.baseUrl}/signup`, { username, password });
+    return this.http.post<SignupResponse>(`${this.baseUrl}/signup`, { username, password })
+      .pipe(
+        catchError(error => {
+          // Handle error in signup
+          return throwError(() => new Error('Signup failed: ' + error.message));
+        })
+      );
   }
 
   // Login method - Authenticates the user and gets the JWT token
-  login(username: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/login`, { username, password });
+  login(username: string, password: string): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.baseUrl}/login`, { username, password })
+      .pipe(
+        catchError(error => {
+          // Handle error in login
+          return throwError(() => new Error('Login failed: ' + error.message));
+        })
+      );
   }
 
   // Store JWT token in localStorage
@@ -65,5 +84,15 @@ export class AuthService {
   decodeToken(token: string): any {
     const payload = token.split('.')[1];  // JWT structure: header.payload.signature
     return JSON.parse(atob(payload));
+  }
+
+  // Get the user info from the token (optional utility function)
+  getUserFromToken(): any {
+    const token = this.getToken();
+    if (token) {
+      const decoded = this.decodeToken(token);
+      return decoded.user || null; // Adjust based on the structure of your token payload
+    }
+    return null;
   }
 }

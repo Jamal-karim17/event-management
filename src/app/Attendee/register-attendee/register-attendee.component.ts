@@ -9,11 +9,13 @@ import { Event } from 'src/app/Events/event.model';
 @Component({
   selector: 'app-register-attendee',
   templateUrl: './register-attendee.component.html',
+  styleUrls: ['./register-attendee.component.css']
 })
 export class RegisterAttendeeComponent implements OnInit {
   events: Event[] = [];
   attendee: Attendee = new Attendee(0, '', '', '', '', 0, '');
   isEditMode: boolean = false;
+  showNotification: boolean = false; // To control notification visibility
 
   constructor(
     private attendeeService: AttendeeService,
@@ -53,7 +55,10 @@ export class RegisterAttendeeComponent implements OnInit {
 
         if (this.isEditMode) {
           this.attendeeService.updateAttendee(this.attendee).subscribe(
-            () => this.router.navigate(['/attendees/list']),
+            () => {
+              this.showNotificationMessage();
+              this.router.navigate(['/attendees/create']);
+            },
             (error) => console.error('Error updating attendee:', error)
           );
         } else {
@@ -61,12 +66,23 @@ export class RegisterAttendeeComponent implements OnInit {
           delete (newAttendee as any).id;
 
           this.attendeeService.addAttendee(newAttendee).subscribe(
-            () => this.router.navigate(['/attendees/list']),
+            () => {
+              this.showNotificationMessage();
+              this.router.navigate(['/attendees/list']);
+            },
             (error) => console.error('Error adding attendee:', error)
           );
         }
       },
       (error) => console.error('Error fetching event details:', error)
     );
+  }
+
+  // Method to show the notification message
+  showNotificationMessage(): void {
+    this.showNotification = true;
+    setTimeout(() => {
+      this.showNotification = false; // Hide after 4 seconds
+    }, 4000);
   }
 }
