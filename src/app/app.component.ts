@@ -12,6 +12,7 @@ export class AppComponent {
   isLoginPage: boolean = false;
   isSignupPage: boolean = false;
   isMainDashboard: boolean = false;
+  isContactPage: boolean = false;
 
   constructor(private router: Router) {
     // Check the current route after each navigation ends
@@ -22,6 +23,7 @@ export class AppComponent {
       this.isLoginPage = currentUrl === '/login';
       this.isSignupPage = currentUrl.includes('/signup');
       this.isMainDashboard = currentUrl === '/customer';
+      this.isContactPage = currentUrl === '/contact';
     });
   }
 }

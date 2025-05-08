@@ -1,0 +1,35 @@
+<!-- Hero Section with Background Image -->
+<div class="contact-hero" style="background-image: url('assets/dj.jpg');">
+    <div class="overlay">
+      <h1>Get in Touch</h1>
+      <p>
+        We'd love to hear from you! Whether you have questions about our services, need assistance with an event,
+        or just want to connect, feel free to reach out.
+      </p>
+      <p><strong>Email:</strong> njogujustingmail.com</p>
+    </div>
+  </div>
+  
+  <!-- Contact Form Container -->
+  <div class="contact-container">
+    <h2 class="form-title">Support</h2>
+    <form (ngSubmit)="submitForm()" #form="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" name="name" class="form-control" [(ngModel)]="contactForm.name" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" name="email" class="form-control" type="email" [(ngModel)]="contactForm.email" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" class="form-control" rows="5" [(ngModel)]="contactForm.message" required></textarea>
+      </div>
+  
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Send Message</button>
+    </form>
+  </div>
+  

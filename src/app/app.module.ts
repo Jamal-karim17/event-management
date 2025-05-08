@@ -19,6 +19,7 @@ import { UpcomingEventsComponent } from './Home/dashboard/upcoming-events/upcomi
 import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { CustomerDashboardComponent } from './customer/customer-dashboard/customer-dashboard.component';
+import { ContactComponent } from './customer/contact/contact.component';
 
 
 
@@ -38,6 +39,7 @@ import { CustomerDashboardComponent } from './customer/customer-dashboard/custom
     LoginComponent,
     SignUpComponent,
     CustomerDashboardComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

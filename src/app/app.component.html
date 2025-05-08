@@ -1,9 +1,9 @@
 <div class="d-flex">
   <!-- Sidebar - only hide on login, signup, or dashboard -->
-  <app-sidebar *ngIf="!isLoginPage && !isSignupPage && !isMainDashboard"></app-sidebar>
+  <app-sidebar *ngIf="!isLoginPage && !isSignupPage &&!isContactPage && !isMainDashboard"></app-sidebar>
 
   <!-- Main Content -->
-  <div class="main-content flex-grow-1 p-3" [ngStyle]="{'margin-left': (isLoginPage || isSignupPage || isMainDashboard) ? '0' : '250px'}">
+  <div class="main-content flex-grow-1 p-3" [ngStyle]="{'margin-left': (isLoginPage || isSignupPage|| isContactPage || isMainDashboard) ? '0' : '250px'}">
     <router-outlet></router-outlet>
   </div>
 </div>
