@@ -5,6 +5,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .signup-form {
@@ -13,12 +15,12 @@
   border-radius: 8px;
   width: 400px;
   text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .signup-form h2 {
   margin-bottom: 20px;
   color: #333;
-  font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 24px;
   font-weight: bold;
   text-transform: uppercase;
@@ -29,7 +31,6 @@
 .signup-form p {
   margin-bottom: 20px;
   color: #f43d0a;
-  font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 16px;
 }
 
@@ -108,4 +109,69 @@ button:disabled {
 
 .login-link a:hover {
   text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .signup-container {
+    padding: 20px;
+    height: auto;
+    align-items: flex-start;
+  }
+
+  .signup-form {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .signup-form h2 {
+    font-size: 20px;
+  }
+
+  .signup-form p,
+  .description {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 15px;
+    padding: 9px;
+  }
+
+  .form-control {
+    font-size: 15px;
+  }
+
+  .input-group-append i {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-form {
+    padding: 15px;
+  }
+
+  .signup-form h2 {
+    font-size: 18px;
+  }
+
+  .signup-form p,
+  .description {
+    font-size: 13px;
+  }
+
+  .form-control {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .input-group-append i {
+    font-size: 15px;
+  }
 }

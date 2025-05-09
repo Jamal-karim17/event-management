@@ -1,94 +1,155 @@
 /* Hero section with background image */
 .contact-hero {
-    background-size: cover;
-    background-position: center;
-    height: 400px;
-    position: relative;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-  }
-  
-  .overlay {
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 40px;
-    width: 100%;
-  }
-  
-  .overlay h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-  }
-  
-  .overlay p {
-    font-size: 16px;
-    margin: 5px 0;
-  }
-  
-  /* Contact form container */
-  .contact-container {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    font-family: Georgia, 'Times New Roman', Times, serif;
-  }
-  
-  .form-title {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #0e3257;
-    text-transform: uppercase;
-    font-size: 24px;
-    font-weight: 100;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    text-shadow: 1px 1px 2px #423a36;
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  position: relative;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
 
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  width: 100%;
+}
+
+.overlay h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.overlay p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+/* Contact form container */
+.contact-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #dfd9d9;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #0e3257;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 100;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-shadow: 1px 1px 2px #423a36;
+}
+
+/* Form styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #0c0e10;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #d9c9c9;
+  color: rgb(16, 15, 15);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #121417;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-hero {
+    height: auto;
+    padding: 60px 20px;
   }
-  
-  /* Form styling */
-  .form-group {
-    margin-bottom: 20px;
+
+  .overlay {
+    padding: 20px;
   }
-  
-  label {
-    font-weight: 600;
-    margin-bottom: 6px;
-    display: block;
+
+  .overlay h1 {
+    font-size: 28px;
   }
-  
+
+  .overlay p {
+    font-size: 14px;
+  }
+
+  .contact-container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .form-title {
+    font-size: 20px;
+  }
+
   .form-control {
-    width: 100%;
-    padding: 10px 12px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    transition: border-color 0.3s ease;
+    font-size: 15px;
+    padding: 8px 10px;
   }
-  
-  .form-control:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-  
+
   button {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 15px;
+    padding: 10px;
   }
-  
-  button:hover {
-    background-color: #0056b3;
+}
+
+@media (max-width: 480px) {
+  .overlay h1 {
+    font-size: 24px;
   }
-  
+
+  .overlay p {
+    font-size: 13px;
+  }
+
+  .form-title {
+    font-size: 18px;
+  }
+
+  .form-control {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 8px;
+  }
+}

@@ -57,7 +57,7 @@ export class RegisterAttendeeComponent implements OnInit {
           this.attendeeService.updateAttendee(this.attendee).subscribe(
             () => {
               this.showNotificationMessage();
-              this.router.navigate(['/attendees/create']);
+              this.router.navigate(['/attendees/list']);
             },
             (error) => console.error('Error updating attendee:', error)
           );
@@ -68,7 +68,7 @@ export class RegisterAttendeeComponent implements OnInit {
           this.attendeeService.addAttendee(newAttendee).subscribe(
             () => {
               this.showNotificationMessage();
-              this.router.navigate(['/attendees/list']);
+              this.router.navigate(['/customer']);
             },
             (error) => console.error('Error adding attendee:', error)
           );
